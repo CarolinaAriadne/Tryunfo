@@ -95,9 +95,9 @@ class Form extends Component {
           value={ cardRare }
           onChange={ onInputChange }
         >
-          <option>normal</option>
-          <option>raro</option>
-          <option>muito raro</option>
+          <option value="normal">normal</option>
+          <option value="raro">raro</option>
+          <option value="muito raro">muito raro</option>
         </select>
         <div>
           <label htmlFor="g">
@@ -136,7 +136,7 @@ Form.propTypes = {
   //   hasTrunfo: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
-  isSaveButtonDisabled: PropTypes.func.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
 };
 
 export default Form;
