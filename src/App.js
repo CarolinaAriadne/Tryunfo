@@ -67,8 +67,6 @@ class App extends React.Component {
       cardTrunfo,
       // hasTrunfo,
       isSaveButtonDisabled,
-      // onInputChange,
-      // onSaveButtonClick,
     } = this.state; // desustruturando estados
 
     return (
@@ -86,7 +84,9 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           // hasTrunfo={hasTrunfo}
           isSaveButtonDisabled={ isSaveButtonDisabled }
-          // onSaveButtonClick={  }
+          onSaveButtonClick={ () => {
+
+          } }
         />
         <Card
           cardName={ cardName }
