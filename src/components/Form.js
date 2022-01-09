@@ -12,7 +12,7 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      //   hasTrunfo,
+      // hasTrunfo,
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick,
@@ -23,6 +23,7 @@ class Form extends Component {
           <label htmlFor="a">
             Nome da Carta
             <input
+              name="cardName"
               type="text"
               data-testid="name-input"
               id="a"
@@ -35,6 +36,7 @@ class Form extends Component {
           <label htmlFor="b">
             Descrição da Carta
             <textarea
+              name="cardDescription"
               id="b"
               data-testid="description-input"
               value={ cardDescription }
@@ -44,8 +46,9 @@ class Form extends Component {
         </div>
         <div>
           <label htmlFor="c">
-            Não sei o que vai aqui
+            attr1
             <input
+              name="cardAttr1"
               type="number"
               data-testid="attr1-input"
               id="c"
@@ -56,8 +59,9 @@ class Form extends Component {
         </div>
         <div>
           <label htmlFor="d">
-            Não sei o que vai aqui 2
+            attr2
             <input
+              name="cardAttr2"
               type="number"
               data-testid="attr2-input"
               id="d"
@@ -68,8 +72,9 @@ class Form extends Component {
         </div>
         <div>
           <label htmlFor="e">
-            Não sei o que vai aqui 3
+            attr3
             <input
+              name="cardAttr3"
               type="number"
               data-testid="attr3-input"
               id="e"
@@ -80,8 +85,8 @@ class Form extends Component {
         </div>
         <div>
           <label htmlFor="f">
-            Não sei o que vai aqui 4
             <input
+              name="cardImage"
               type="text"
               data-testid="image-input"
               id="f"
@@ -91,6 +96,7 @@ class Form extends Component {
           </label>
         </div>
         <select
+          name="cardRare"
           data-testid="rare-input"
           value={ cardRare }
           onChange={ onInputChange }
@@ -101,8 +107,9 @@ class Form extends Component {
         </select>
         <div>
           <label htmlFor="g">
-            Não sei o que vai aqui 5
+            Card Trunfo
             <input
+              name="cardTrunfo"
               type="checkbox"
               data-testid="trunfo-input"
               id="f"
@@ -135,7 +142,7 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   //   hasTrunfo: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
-  onSaveButtonClick: PropTypes.func.isRequired,
+  // onSaveButtonClick: PropTypes.func.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
 };
 
