@@ -85,6 +85,7 @@ class Form extends Component {
         </div>
         <div>
           <label htmlFor="f">
+            Imagem
             <input
               name="cardImage"
               type="text"
