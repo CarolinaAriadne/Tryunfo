@@ -168,6 +168,8 @@ class App extends React.Component {
 
 export default App;
 
+// form e o card são "irmãos", então não tem como passar as props de um pra outro. Por isso toda a manipulação de estado se faz no App (pai) e depois isso (estado) é passado como props para os dois filhos
+
 // REQUISITO 4:
 // Form e Card, componentes irmãos: definindo props destes, quando ambos são chamados no elemento pai App. O estado inicial destas props, está definido em constructor.
 // // definindo estado inicial das props no constructor. OBS: o cardTrunfo começa como false, porque  só vai ser true, quando existir uma carta trunfo.
