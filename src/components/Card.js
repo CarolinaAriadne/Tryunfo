@@ -42,4 +42,4 @@ Card.propTypes = {
 
 export default Card;
 
-// {cardTrunfo && <p data-testid="trunfo-card">Super trunfo</p>} - quando cardTrunfo for true, o texto da tag p será exibido.
+//  linha 26: {cardTrunfo && <p data-testid="trunfo-card">Super trunfo</p>} - quando cardTrunfo for true, o texto da tag p será exibido.

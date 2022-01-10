@@ -81,6 +81,7 @@ class App extends React.Component {
       trunfoCard: cardTrunfo,
 
     };
+    console.log(cardObject);
     const hasTrunfoCardSaved = (cartasSaved !== undefined
     && cartasSaved.some((carta) => carta.cardTrunfo))
     || cardObject.trunfoCard;
@@ -112,7 +113,21 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      cartasSaved,
     } = this.state; // desustruturando estados
+    const percorreCartas = cartasSaved.map((card) => (
+      <Card
+        key={ card.name }
+        cardName={ card.name }
+        cardDescription={ card.description }
+        cardAttr1={ card.card1 }
+        cardAttr2={ card.card2 }
+        cardAttr3={ card.card3 }
+        cardImage={ card.image }
+        cardRare={ card.rarity }
+        cardTrunfo={ card.trunfoCard }
+      />
+    ));
 
     return (
       <>
@@ -141,6 +156,9 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div>
+          {percorreCartas}
+        </div>
       </>
     );
   }
@@ -195,3 +213,19 @@ export default App;
 //     />
 //   </label>)}
 // OU SEJA, hasTrunfo terá o valor de true ou false. Se for true (existem cartas e uma delas é carta trunfo), o p será renderizado com a frase de aviso que já existe uma carta trunfo no baralho, se hasTrunfo for false (ou seja não existe carta em savedCard, ou existem cartas porém não existe a carta trunfo ), será renderizada a tag label/input e o checkbox com a opção para que o usuário defina a carta como trunfo se quiser.
+
+// REQUISITO 8
+// Depois que as cartas são salvas no estado, para lista -las para que sejam renderizadas na tela:
+//  const percorreCartas = cartasSaved.map((card) => (
+//   <Card
+//   key={ card.name }
+//   cardName={ card.name }
+//   cardDescription={ card.description }
+//   cardAttr1={ card.card1 }
+//   cardAttr2={ card.card2 }
+//   cardAttr3={ card.card3 }
+//   cardImage={ card.image }
+//   cardRare={ card.rarity }
+//   cardTrunfo={ card.trunfoCard }
+// />
+// ou seja, passo um mapeamento no meu cartasSaved (onde estão guardadas todas cartas adicionadas pelo usuário), para que a cada iteração, meu componente Card seja chamado, e então suas props como cardName, cardAttr1  e etc, vão exibir  valores, valores como name, description etc ( valores que vem do cardObject ), deste modo, renderizando na tela as cartas com suas informações, que foram salvas pelo usuário.
