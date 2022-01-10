@@ -17,7 +17,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       cartasSaved: [],
     };
@@ -81,6 +81,9 @@ class App extends React.Component {
       trunfoCard: cardTrunfo,
 
     };
+    const hasTrunfoCardSaved = (cartasSaved !== undefined
+    && cartasSaved.some((carta) => carta.cardTrunfo))
+    || cardObject.trunfoCard;
 
     this.setState({
       cartasSaved: [...cartasSaved, cardObject],
@@ -92,7 +95,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: hasTrunfoCardSaved,
       isSaveButtonDisabled: true,
     });
   }
@@ -107,7 +110,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
     } = this.state; // desustruturando estados
 
@@ -124,7 +127,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          // hasTrunfo={hasTrunfo}
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.buttonSave }
         />
@@ -142,6 +145,8 @@ class App extends React.Component {
     );
   }
 }
+
+// data-testid="trunfo-input"
 
 export default App;
 
@@ -167,3 +172,26 @@ export default App;
 // REQUISITO 6:
 // Iniciar um novo campo para salvar as cartas.
 // Esse novo campo vai ser um array onde vamos deixar salvas todas as cartas. Inclui estado inicial como array vazio, pois as cartas será salvas dentro de um objeto, sendo que este objeto estará dentro deste array. Desustruturamos os estados para pegar as informações incluídas pelo usuário. Colhidas as informações, salvamos as referidas dentro de um objeto (cardObject); deste modo, temos um objeto pronto que contém as informações da carta que queremos salvar. Esse objeto com as informações da carta, precisa ser salvo no state que é estado inicial [] definido. Antes de salvar a atual carta, guardamos em uma const a variável referente ao estado inicial, para que as cartas anteriores não seja sobrescritas. Com as informações da carta atual e das cartas anteriores,  iremos salvar isto no state. Atualizamos o estado então, jogando a variável do estado inicial cartasSaved e passando seu novo valor, que será as informações das cartas anteriores + as informações da nova carta. Em seguida, da atualização do estado, passamos as outras props abaixo para serem atualizadas tbm, ou seja, para que retornem ao seu valor inicial, deste modo, o conteúdo de name, imagem e  descrição é limpo, os campos de atributos voltam ao seu estado inicial 0 e raridade volta ao seu estado inicial normal.
+
+// REQUISITO 7:
+// const hasTrunfoCardSaved = (cartasSaved !== undefined
+// && cartasSaved.some((carta) => carta.trunfoCard))
+// || cardObject.trunfoCard;
+// se cartaSaved (onde são salvas as cartas adicionadas) não for undefined, ou seja, se existir cartas adicionadas E alguma (some) dessas cartas for a carta trunfo, OU se a carta atual que está sendo preenchida for a carta trunfo
+
+// hasTrunfo: hasTrunfoCardSaved >> hasTrunfoCardSaved vai receber true ou false, dependendo se existe cartas e uma das cartas é uma carta trunfo (true) - se não existe carta nenhuma salva ou existe, mas não é uma carta trunfo (false)
+// no Componente Form, onde existe a renderização do elemento:
+//   {hasTrunfo ? (<p>Você já tem um Super Trunfo em seu baralho</p>)
+// : (
+//   <label htmlFor="g">
+//     Card Trunfo
+//     <input
+//       name="cardTrunfo"
+//       type="checkbox"
+//       data-testid="trunfo-input"
+//       id="f"
+//       checked={ cardTrunfo }
+//       onChange={ onInputChange }
+//     />
+//   </label>)}
+// OU SEJA, hasTrunfo terá o valor de true ou false. Se for true (existem cartas e uma delas é carta trunfo), o p será renderizado com a frase de aviso que já existe uma carta trunfo no baralho, se hasTrunfo for false (ou seja não existe carta em savedCard, ou existem cartas porém não existe a carta trunfo ), será renderizada a tag label/input e o checkbox com a opção para que o usuário defina a carta como trunfo se quiser.
